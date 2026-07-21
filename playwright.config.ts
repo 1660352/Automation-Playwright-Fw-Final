@@ -26,7 +26,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL: 'https://shopdemo-e3gwg9hqaygghmbv.canadacentral-01.azurewebsites.net',
-    headless: false,
+    headless: !!process.env.CI,
     trace: 'on-first-retry',
   },
 

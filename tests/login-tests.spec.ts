@@ -1,15 +1,18 @@
 import test, { expect } from '@core/fixtures/all.fixture';
 import { ReportUtils } from '@core/utils/report-utils';
 import * as allure from "allure-js-commons";
+import accounts from '../resources/accounts.json';
 
 test('ADMIN - Login successfully with valid username and password', async ({ page, loginPage }) => {
+
+    var account = accounts.find(account => account.role === 'admin') || { username: '', password: '' };
 
     await allure.step('Step 1: Navigate to the login page', async () => {
         await loginPage.openUrl();
     });
 
     await allure.step('Step 2: Enter valid username and password', async () => {
-        await loginPage.doLogin('admin', 'password123');
+        await loginPage.doLogin(account.username, account.password);
     });
 
     await allure.step('Step 3: Verify successful login', async () => {
@@ -21,12 +24,14 @@ test('ADMIN - Login successfully with valid username and password', async ({ pag
 
 test('ADMIN - Verify products are displayed in Featured Products section', async ({ page, loginPage, homePage }) => {
 
+    var account = accounts.find(account => account.role === 'admin') || { username: '', password: '' };
+
     await allure.step('Step 1: Navigate to the login page', async () => {
         await loginPage.openUrl();
     });
 
     await allure.step('Step 2: Enter valid username and password', async () => {
-        await loginPage.doLogin('admin', 'password123');
+        await loginPage.doLogin(account.username, account.password);
     });
 
     await allure.step('Step 4: Verify products are displayed in Featured Products section', async () => {
@@ -41,12 +46,14 @@ test('ADMIN - Verify products are displayed in Featured Products section', async
 
 test('USER - Login successfully with valid username and password', async ({ page, loginPage }) => {
 
+    var account = accounts.find(account => account.role === 'customer') || { username: '', password: '' };
+
     await allure.step('Step 1: Navigate to the login page', async () => {
         await loginPage.openUrl();
     });
 
     await allure.step('Step 2: Enter valid username and password', async () => {
-        await loginPage.doLogin('ate.user1', '12345678');
+        await loginPage.doLogin(account.username, account.password);
     });
 
     await allure.step('Step 3: Verify successful login', async () => {
@@ -58,12 +65,14 @@ test('USER - Login successfully with valid username and password', async ({ page
 
 test('USER - User able to view user’s profile successfully', async ({ page, loginPage, profilePage, homePage }) => {
 
+    var account = accounts.find(account => account.role === 'customer') || { username: '', password: '' };
+
     await allure.step('Step 1: Navigate to the login page', async () => {
         await loginPage.openUrl();
     });
 
     await allure.step('Step 2: Enter valid username and password', async () => {
-        await loginPage.doLogin('ate.user1', '12345678');
+        await loginPage.doLogin(account.username, account.password);
     });
 
     await allure.step('Step 3: Go to user profile page', async () => {

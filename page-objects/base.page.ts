@@ -28,6 +28,10 @@ export class BasePage {
         return await element.textContent();
     }
 
+    async getInputValue(element: Locator) {
+        return await element.inputValue();
+    }
+
     async hoverOnElement(element: string) {
         return await this.page.hover(element);
     }
@@ -47,5 +51,9 @@ export class BasePage {
     async getText(locator: Locator) {
         const elementText = await locator.innerText();
         return elementText;
+    }
+
+    async countElements(locator: Locator): Promise<number> {
+        return await locator.count();
     }
 }

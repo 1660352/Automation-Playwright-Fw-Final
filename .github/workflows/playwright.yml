@@ -1,7 +1,18 @@
 name: Playwright Tests
 
 on:
-    workflow_dispatch:
+  workflow_dispatch:
+    inputs:
+      workers:
+        description: Number of Playwright workers
+        required: true
+        default: "1"
+        type: choice
+        options:
+          - "1"
+          - "2"
+          - "3"
+          - "4"
 
 jobs:
     test:
@@ -25,7 +36,7 @@ jobs:
               run: npx playwright install --with-deps chromium
 
             - name: Run Playwright tests
-              run: npx playwright test
+              run: npx playwright test --workers=${{ github.event.inputs.workers }}
 
             - name: Generate Allure HTML report
               if: always()

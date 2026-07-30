@@ -16,7 +16,7 @@ test.describe('Login Tests - Admin Role', () => {
         });
     });
 
-    test('ADMIN - Login successfully with valid username and password', async ({ page }) => {
+    test('ADMIN - Login successfully with valid username and password', { tag: "@admin" }, async ({ page }) => {
         await allure.step('Verify successful login', async () => {
             await ReportUtils.attachScreenshot("should see home page", page, async () => {
                 await expect(page).toHaveURL('/home');
@@ -24,7 +24,7 @@ test.describe('Login Tests - Admin Role', () => {
         });
     });
 
-    test('ADMIN - Verify products are displayed in Featured Products section', async ({ page, homePage }) => {
+    test('ADMIN - Verify products are displayed in Featured Products section', { tag: "@admin" }, async ({ page, homePage }) => {
         await allure.step('Verify products are displayed in Featured Products section', async () => {
             await ReportUtils.attachScreenshot("should see featured products", page, async () => {
                 await expect(async () => {
@@ -49,7 +49,7 @@ test.describe('Login Tests - Customer Role', () => {
         });
     });
 
-    test('Customer - Login successfully with valid username and password', async ({ page }) => {
+    test('Customer - Login successfully with valid username and password', { tag: "@customer" }, async ({ page }) => {
         await allure.step('Verify successful login', async () => {
             await ReportUtils.attachScreenshot("should see home page", page, async () => {
                 await expect(page).toHaveURL('/home');
@@ -57,7 +57,7 @@ test.describe('Login Tests - Customer Role', () => {
         });
     });
 
-    test('Customer - User able to view user’s profile successfully', async ({ page, profilePage, homePage }) => {
+    test('Customer - User able to view user’s profile successfully', { tag: "@customer" }, async ({ page, profilePage, homePage }) => {
         await allure.step('Step 1: Go to user profile page', async () => {
             await homePage.clickOnHeaderUsername();
         });

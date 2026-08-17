@@ -9,7 +9,7 @@ const account = accounts.find((a) => a.role === "customer") || {
   password: "",
 };
 
-test.describe("Scenario 6: Update Full Name then clean up via API (REQUIRED)", () => {
+test.describe("Scenario 6: Update Full Name then clean up via API ", () => {
   let api: ApiHelper;
   let originalName: string;
 

@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "report:allure:html": "allure generate ./reports/allure-results -o ./reports/allure-html-report",
-    "report:html": "npx playwright show-report"
+    "report:html": "npx playwright show-report ./reports/playwright-report"
   },
   "devDependencies": {
     "@playwright/test": "^1.61.1",

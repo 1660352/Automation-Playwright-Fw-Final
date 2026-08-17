@@ -70,9 +70,11 @@ test.describe("Scenario 5: Checkout with valid receiver info COD", () => {
       });
 
       await allure.step("Step 3: Fill in recipient information", async () => {
-        await checkoutPage.fillRecipientName("Nguyen Van Test");
+        await checkoutPage.fillRecipientName("Nguyen Van A");
         await checkoutPage.fillPhone("0901234567");
-        await checkoutPage.fillAddress("123 Le Loi, Quan 1, Ho Chi Minh City");
+        await checkoutPage.fillAddress(
+          "364 Cong Hoa , Tan Binh, Ho Chi Minh City",
+        );
       });
 
       await allure.step("Step 4: Select COD payment method", async () => {

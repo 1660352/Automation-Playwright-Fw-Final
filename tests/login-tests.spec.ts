@@ -132,7 +132,7 @@ test.describe("Login Tests - Customer Role", () => {
             async () => {
               const usernameInputValue =
                 await profilePage.getUserNameInputValue();
-              expect(usernameInputValue).toBe("ate.user1");
+              expect(usernameInputValue).toBe("ate.namie1");
             },
           );
         },
